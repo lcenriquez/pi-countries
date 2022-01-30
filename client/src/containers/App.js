@@ -1,14 +1,13 @@
-import style from './App.module.css';
+import { Routes, Route } from 'react-router-dom';
+import Landing from '../components/Landing/Landing';
+import Home from '../components/Home/Home';
 
 function App() {
   return (
-    <div className={style.landingPageContainer}>
-      <div className={style.banner}>
-        <h1>Henry Countries</h1>
-        <h2>Made by Luis Carlos Enríquez</h2>
-        <button className={style.cta}>Start</button>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/home" element={<Home />} />
+    </Routes>
   );
 }
 
