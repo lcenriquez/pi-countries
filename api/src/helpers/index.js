@@ -11,7 +11,7 @@ const createBulkCountries = (countries) => {
       flag: country.flags[0],
       continent: country.continents[0],
       capital: country.capital ? country.capital[0] : "N/A",
-      subregion: country.subregion ? country.subregion[0] : "N/A",
+      subregion: country.subregion ? country.subregion : "N/A",
       area: Math.floor(country.area),
       population: Math.floor(country.population)
     }
