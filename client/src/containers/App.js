@@ -5,6 +5,8 @@ import Home from '../components/Home/Home';
 import Country from '../components/Country/Country';
 
 function App() {
+  document.body.classList.add('darkMode');
+
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
