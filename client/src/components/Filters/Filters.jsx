@@ -7,7 +7,7 @@ export default function Filters() {
       <div className={style.actualFilters}>
         <div className={style.filter}>
           <label>Activities</label>
-          <select>
+          <select name="activities">
             <option value="value1">Ski</option>
             <option value="value2">Diving</option>
             <option value="value3">Hiking</option>
@@ -16,24 +16,24 @@ export default function Filters() {
         </div>
         <div className={style.filter}>
           <label>Continents</label>
-          <select>
-            <option value="value1">Asia</option>
-            <option value="value2">Oceania</option>
-            <option value="value3">North America</option>
-            <option value="value3">South America</option>
+          <select name="continents">
+            <option value="Asia">Asia</option>
+            <option value="Oceania">Oceania</option>
+            <option value="NA">North America</option>
+            <option value="SA">South America</option>
           </select>
         </div>
         <div className={style.filter}>
           <label>Sort</label>
-          <select>
-            <option value="value1">Alphabetically (A-Z)</option>
-            <option value="value2">Alpabetically (Z-A)</option>
-            <option value="value3">By population (greatest first)</option>
-            <option value="value3">By population (lowest first)</option>
+          <select name="sortBy">
+            <option value="A-Z">Alphabetically (A-Z)</option>
+            <option value="Z-A">Alpabetically (Z-A)</option>
+            <option value="P-H">By population (highest first)</option>
+            <option value="P-L">By population (lowest first)</option>
           </select>
         </div>
         <div className={style.filter}>
-          <input type="text" placeholder="Search by name" />
+          <input type="text" name="country" placeholder="Search by name" />
         </div>
       </div>        
     </form>
