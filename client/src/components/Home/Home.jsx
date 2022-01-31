@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Filters from '../Filters/Filters';
 import Card from '../Card/Card';
 import { getAllCountries } from '../../adapters/api/countries';
 import style from './Home.module.css';
@@ -11,8 +12,11 @@ export default function Home() {
   },[]);
 
   return (
-    <div className={style.cardsContainer}>
-      {countries?.map(country => <Card key={country.id} {...country} />)}
+    <div>
+      <Filters />
+      <div className={style.cardsContainer}>
+        {countries?.map(country => <Card key={country.id} {...country} />)}
+      </div>
     </div>
   );
 }
