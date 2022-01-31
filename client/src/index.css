@@ -30,3 +30,11 @@ a {
 .darkMode a {
   color: white;
 }
+
+.darkMode select {
+  color: white;
+}
+
+.darkMode input[type=text] {
+  color: white;
+}
