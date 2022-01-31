@@ -2,9 +2,21 @@
   padding: 30px;
 }
 
+.activitiesContainer {
+  padding: 20px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
 .countryLayout {
   display: flex;
   justify-content: space-between;
+  gap: 50px;
+}
+
+.leftSidebar {
+  flex: 1;
 }
 
 .rightSidebar img {

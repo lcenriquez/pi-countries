@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ActivityCard from "../ActivityCard/ActivityCard";
 import { getCountry } from "../../adapters/api/countries";
 import style from './Country.module.css';
 
@@ -19,11 +20,14 @@ export default function Country() {
   );
 }
 
-function Details({ id, name, flag, continent, capital, subregion, population, area }) {
+function Details({ id, name, flag, continent, capital, subregion, population, area, activities }) {
   return (
     <div className={style.countryLayout}>
       <div className={style.leftSidebar}>
         <h1>Things to do in {name}</h1>
+        <div className={style.activitiesContainer}>
+          {activities?.map(activity => <ActivityCard key={activity.id} {...activity} />)}
+        </div>
       </div>
       <div className={style.rightSidebar}>
         <h1>Country details</h1>
