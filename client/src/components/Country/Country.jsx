@@ -52,11 +52,11 @@ function Details({ id, name, flag, continent, capital, subregion, population, ar
             </tr>
             <tr>
               <th>Population:</th>
-              <td>{population}</td>
+              <td>{population.toLocaleString()}</td>
             </tr>
             <tr>
               <th>Area:</th>
-              <td>{area}</td>
+              <td>{area.toLocaleString()} km<sup>2</sup></td>
             </tr>  
           </tbody>
           
