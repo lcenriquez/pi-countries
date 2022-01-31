@@ -10,7 +10,6 @@ export default function Country() {
 
   useEffect(() => {
     getCountry(id).then(country => setCountry(country));
-    console.log(country);
   },[]);
 
   return (
@@ -30,34 +29,37 @@ function Details({ id, name, flag, continent, capital, subregion, population, ar
         <h1>Country details</h1>
         <img src={flag} alt={name} />
         <table>
-          <tr>
-            <th>Name:</th>
-            <td>{name}</td>
-          </tr>
-          <tr>
-            <th>Country code:</th>
-            <td>{id}</td>
-          </tr>
-          <tr>
-            <th>Capital:</th>
-            <td>{capital}</td>
-          </tr>
-          <tr>
-            <th>Region/Continent:</th>
-            <td>{continent}</td>
-          </tr>
-          <tr>
-            <th>Subregion:</th>
-            <td>{subregion}</td>
-          </tr>
-          <tr>
-            <th>Population:</th>
-            <td>{population}</td>
-          </tr>
-          <tr>
-            <th>Area:</th>
-            <td>{area}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <th>Name:</th>
+              <td>{name}</td>
+            </tr>
+            <tr>
+              <th>Country code:</th>
+              <td>{id}</td>
+            </tr>
+            <tr>
+              <th>Capital:</th>
+              <td>{capital}</td>
+            </tr>
+            <tr>
+              <th>Region/Continent:</th>
+              <td>{continent}</td>
+            </tr>
+            <tr>
+              <th>Subregion:</th>
+              <td>{subregion}</td>
+            </tr>
+            <tr>
+              <th>Population:</th>
+              <td>{population}</td>
+            </tr>
+            <tr>
+              <th>Area:</th>
+              <td>{area}</td>
+            </tr>  
+          </tbody>
+          
         </table>
       </div>
     </div>
