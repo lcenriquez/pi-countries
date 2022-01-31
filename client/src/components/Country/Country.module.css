@@ -9,6 +9,8 @@
 
 .rightSidebar img {
   width: 300px;
+  margin: 15px 0px;
+  border-radius: 10px;
 }
 
 .rightSidebar table tr th {
