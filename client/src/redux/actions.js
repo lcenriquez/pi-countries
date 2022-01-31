@@ -14,7 +14,14 @@ function addFilter(filter, value) {
   };
 }
 
+function clearFilters() {
+  return {
+    type: 'CLEAR_FILTERS'
+  };
+}
+
 module.exports = {
   addCountries,
-  addFilter
+  addFilter,
+  clearFilters
 }

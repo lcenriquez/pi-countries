@@ -1,9 +1,9 @@
 import style from './Filters.module.css';
 
-export default function Filters() {
+export default function Filters({ reduxFilters, addFilter, clearFilters }) {
   return (
     <form className={style.filtersContainer}>
-      <span>Filters</span>
+      <span>Filters {Object.keys(reduxFilters).length > 0 ? <a onClick={clearFilters}>(clear)</a> : null}</span>
       <div className={style.actualFilters}>
         <div className={style.filter}>
           <label>Activities</label>
@@ -25,7 +25,8 @@ export default function Filters() {
         </div>
         <div className={style.filter}>
           <label>Sort</label>
-          <select name="sortBy">
+          <select name="sort" onChange={(e) => addFilter(e.target.name, e.target.value)} defaultValue={reduxFilters?.sort || ""}>
+            <option disabled value=""> -- select an option -- </option>
             <option value="A-Z">Alphabetically (A-Z)</option>
             <option value="Z-A">Alpabetically (Z-A)</option>
             <option value="P-H">By population (highest first)</option>
@@ -33,7 +34,7 @@ export default function Filters() {
           </select>
         </div>
         <div className={style.filter}>
-          <input type="text" name="country" placeholder="Search by name" />
+          <input type="text" name="country" placeholder="Search by name" onChange={(e) => addFilter(e.target.name, e.target.value)} defaultValue={reduxFilters?.country} />
         </div>
       </div>        
     </form>

@@ -1,7 +1,7 @@
 import { Routes, Route, Outlet } from 'react-router-dom';
 import Landing from '../components/Landing/Landing';
 import Layout from '../components/Layout/Layout';
-import Home from '../components/Home/Home';
+import Home from './Home/Home';
 import Country from '../components/Country/Country';
 
 function App() {
