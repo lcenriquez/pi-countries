@@ -1,5 +1,5 @@
 const express = require('express');
-const { Country } = require('../db');
+const { Country, Activity } = require('../db');
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   let id = req.params.id;
-  let country = await Country.findByPk(id);
+  let country = await Country.findByPk(id,{include: Activity});
   if (!country) return res.status(404).json("Country not found");
   res.json(country);
 });
