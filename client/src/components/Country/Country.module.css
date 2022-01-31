@@ -1,0 +1,16 @@
+.countryContainer {
+  padding: 30px;
+}
+
+.countryLayout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rightSidebar img {
+  width: 300px;
+}
+
+.rightSidebar table tr th {
+  text-align: left;
+}
