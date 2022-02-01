@@ -1,6 +1,6 @@
 import style from './Filters.module.css';
 
-export default function Filters({ reduxFilters, addFilter, clearFilters }) {
+export default function Filters({ reduxFilters, reduxContinents, addFilter, clearFilters }) {
   return (
     <form className={style.filtersContainer}>
       <span>Filters {Object.keys(reduxFilters).length > 0 ? <a onClick={clearFilters}>(clear)</a> : null}</span>
@@ -16,11 +16,9 @@ export default function Filters({ reduxFilters, addFilter, clearFilters }) {
         </div>
         <div className={style.filter}>
           <label>Continents</label>
-          <select name="continents">
-            <option value="Asia">Asia</option>
-            <option value="Oceania">Oceania</option>
-            <option value="NA">North America</option>
-            <option value="SA">South America</option>
+          <select name="continent" onChange={(e) => addFilter(e.target.name, e.target.value)} defaultValue={reduxFilters?.continent || ""}>
+            <option disabled value=""> -- select an option -- </option>
+            {reduxContinents?.map(continent => <option key={continent} value={continent}>{continent}</option>)}
           </select>
         </div>
         <div className={style.filter}>

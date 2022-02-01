@@ -10,6 +10,7 @@ export default function Home() {
   const [ countries, setCountries ] = useState([]);
   const dispatch = useDispatch();
   const reduxCountries = useSelector(state => state.countries);
+  const reduxContinents = useSelector(state => state.continents);
   const reduxFilters = useSelector(state => state.filters);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export default function Home() {
 
   return (
     <div>
-      <Filters reduxFilters={reduxFilters} addFilter={(filter, value) => dispatch(addFilter(filter, value))} clearFilters={() => dispatch(clearFilters())} />
+      <Filters reduxFilters={reduxFilters} reduxContinents={reduxContinents} addFilter={(filter, value) => dispatch(addFilter(filter, value))} clearFilters={() => dispatch(clearFilters())} />
       <Countries countries={countries} />
     </div>
   );
