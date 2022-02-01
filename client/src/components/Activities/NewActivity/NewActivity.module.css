@@ -1,0 +1,17 @@
+.newActivityForm {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  max-width: 50%;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field small {
+  color: red;
+}

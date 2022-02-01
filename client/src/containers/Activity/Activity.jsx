@@ -1,31 +1,28 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import NewActivity from "../../components/Activities/NewActivity/NewActivity";
+import { validateName, validateDifficulty, validateDuration } from "../../adapters/validators/newActivity";
 
 export default function Activity() {
   const dispatch = useDispatch();
   const [ input, setInput ] = useState({});
   const [ errors, setErrors ] = useState({});
 
+  function validate(input) {
+    let errors = {};
+    errors.name = validateName(input.name);
+    errors.difficulty = validateDifficulty(input.difficulty);
+    errors.duration = validateDuration(input.duration);
+    return errors;
+  }
+
   function handleChange(event) {
     event.preventDefault();
-    setInput({...input, [event.target.name]: event.target.value})
+    setInput({...input, [event.target.name]: event.target.value});
+    setErrors(validate({...input, [event.target.name]: event.target.value}));
   }
 
   return (
-    <div className="container">
-      <h1>New activity</h1>
-      <form>
-        <input type="text" name="name" placeholder="Activity name" onChange={(e) => handleChange(e)} />
-        <input type="text" name="duration" placeholder="Duration (mins)" onChange={(e) => handleChange(e)} />
-        <input type="text" name="difficulty" placeholder="Difficulty" onChange={(e) => handleChange(e)} />
-        <select name="season" onChange={(e) => handleChange(e)}>
-          <option value="Spring">Spring</option>
-          <option value="Summer">Summer</option>
-          <option value="Autumn">Autumn</option>
-          <option value="Winter">Winter</option>
-        </select>
-        Available in:
-      </form>
-    </div>
+    <NewActivity handleChange={handleChange} errors={errors} />
   );
 }
