@@ -34,5 +34,6 @@ function filter(countries, filters) {
 }
 
 module.exports = {
-  filter
+  filter,
+  search
 }

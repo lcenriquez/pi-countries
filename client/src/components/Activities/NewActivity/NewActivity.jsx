@@ -1,6 +1,7 @@
+import Multiselect from '../../Multiselect/Multiselect';
 import style from './NewActivity.module.css';
 
-export default function NewActivity({ handleChange, errors }) {
+export default function NewActivity({ options, handleChange, errors }) {
   return (
     <div className="container">
       <h1>New activity</h1>
@@ -30,6 +31,10 @@ export default function NewActivity({ handleChange, errors }) {
             <option value="Winter">Winter</option>
           </select>
           <small>&nbsp;</small>
+        </div>
+        <div className={style.field}>
+          <label>Countries</label>
+          <Multiselect options={options} />
         </div>
         All fields are required.
       </form>

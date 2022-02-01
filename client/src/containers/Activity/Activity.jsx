@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import NewActivity from "../../components/Activities/NewActivity/NewActivity";
 import { validateName, validateDifficulty, validateDuration } from "../../adapters/validators/newActivity";
 
@@ -7,6 +7,7 @@ export default function Activity() {
   const dispatch = useDispatch();
   const [ input, setInput ] = useState({});
   const [ errors, setErrors ] = useState({});
+  const reduxCountries = useSelector(state => state.countries)
 
   function validate(input) {
     let errors = {};
@@ -23,6 +24,6 @@ export default function Activity() {
   }
 
   return (
-    <NewActivity handleChange={handleChange} errors={errors} />
+    <NewActivity handleChange={handleChange} errors={errors} options={reduxCountries} />
   );
 }

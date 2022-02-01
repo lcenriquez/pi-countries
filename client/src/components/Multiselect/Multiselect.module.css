@@ -1,0 +1,25 @@
+.selectContainer {
+  position: relative;
+}
+
+.optionsContainer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.optionList {
+  display: none;
+  border: 1px solid gray;
+  user-select: none;
+}
+
+.optionList label {
+  display: block;
+}
+
+.selectContainer select {
+  width: 100%;
+}
