@@ -3,7 +3,7 @@ import style from './Filters.module.css';
 export default function Filters({ reduxFilters, reduxContinents, addFilter, clearFilters }) {
   return (
     <form className={style.filtersContainer}>
-      <span>Filters {Object.keys(reduxFilters).length > 0 ? <a onClick={clearFilters}>(clear)</a> : null}</span>
+      <span>Filters {Object.keys(reduxFilters).length > 0 ? <a onClick={clearFilters}>[clear]</a> : null}</span>
       <div className={style.actualFilters}>
         <div className={style.filter}>
           <label>Activities</label>

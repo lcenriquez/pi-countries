@@ -9,6 +9,16 @@
   gap: 20px;
 }
 
+.filtersContainer span {
+  font-weight: bold;
+}
+
+.filtersContainer span a {
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: normal;
+}
+
 .actualFilters {
   display: flex;
   gap: 20px;
