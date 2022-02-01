@@ -46,7 +46,17 @@ a {
   border: 1px solid gray;
   border-radius: 3px;
 }
-  
+
+.darkMode button {
+  color: white;
+}
+
+.darkMode button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  transition: all 0.2s;
+}
 
 .container {
   padding: 30px;
