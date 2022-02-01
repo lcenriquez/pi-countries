@@ -6,8 +6,8 @@ export default function Nav() {
     <nav className={style.navContainer}>
       <Link to="/countries"><h4>Henry Countries</h4></Link>
       <ul>
-        <li>Link 1</li>
-        <li>Link 2</li>
+      <li><Link to='/activities'>Activities</Link></li>
+      <li><Link to='/activities/new'>Create activity</Link></li>
       </ul>
     </nav>
   );

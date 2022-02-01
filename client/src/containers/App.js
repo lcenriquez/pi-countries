@@ -1,7 +1,8 @@
 import { Routes, Route, Outlet } from 'react-router-dom';
+import Activity from './Activity/Activity';
+import Home from './Home/Home';
 import Landing from '../components/Landing/Landing';
 import Layout from '../components/Layout/Layout';
-import Home from './Home/Home';
 import Country from '../components/Country/Country';
 
 function App() {
@@ -13,6 +14,9 @@ function App() {
       <Route path="/countries" element={<Layout><Outlet /></Layout>}>
         <Route path="" element={<Home />} />
         <Route path=":id" element={<Country />} />
+      </Route>
+      <Route path="/activities" element={<Layout><Outlet /></Layout>}>
+        <Route path="new" element={<Activity />} />
       </Route>
       <Route path="*" element={<p>Not found</p>} />
     </Routes>

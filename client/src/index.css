@@ -33,8 +33,14 @@ a {
 
 .darkMode select {
   color: white;
+  background-color: transparent;
 }
 
 .darkMode input[type=text] {
   color: white;
+  background-color: transparent;
+}
+
+.container {
+  padding: 30px;
 }
