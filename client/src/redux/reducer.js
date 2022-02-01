@@ -1,14 +1,18 @@
 const initialState = {
   countries: [],
+  continents: [],
   filters: {}
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "ADD_COUNTRIES":
+      let continents = [];
+      action.countries.forEach(country => !continents.includes(country.continent) ? continents.push(country.continent) : null);
       return {
         ...state,
-        countries: action.countries
+        countries: action.countries,
+        continents: continents
       }
     case "ADD_FILTER":
       return {
