@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NewActivity from "../../components/Activities/NewActivity/NewActivity";
+import { createActivity } from "../../adapters/api/activities";
 import { validateName, validateDifficulty, validateDuration, validatePresence } from "../../adapters/validators/newActivity";
 
 export default function Activity() {
@@ -55,7 +56,7 @@ export default function Activity() {
   function handleSubmit(event) {
     event.preventDefault();
     if (Object.keys(input).length === 5 && errorCount === 0) {
-      console.log("Inputs are complete")
+      let activity = createActivity(input);
     }
   }
 
