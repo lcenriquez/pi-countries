@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function ShowActivity({ name, difficulty, duration, season, countries }) {
   return (
     <div>
@@ -5,7 +7,8 @@ export default function ShowActivity({ name, difficulty, duration, season, count
       <p>Difficulty: {difficulty}</p>
       <p>Duration: {duration}</p>
       <p>Season: {season}</p>
-      <p>Available in: {countries?.join(', ')}</p>
+      Available in:
+      <ul>{countries?.map(c => <li><Link to={`/countries/${c.id}`}>{c.name}</Link></li>)}</ul>
     </div>
   );
 }
