@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NewActivity from "../../components/Activities/NewActivity/NewActivity";
@@ -6,6 +7,7 @@ import { validateName, validateDifficulty, validateDuration, validatePresence } 
 
 export default function Activity() {
   const dispatch = useDispatch();
+  const navigate = useNavigate(); 
   const [ input, setInput ] = useState({});
   const [ errors, setErrors ] = useState({});
   const [ selectedOptions, setSelectedOptions ] = useState([]);
@@ -56,7 +58,10 @@ export default function Activity() {
   function handleSubmit(event) {
     event.preventDefault();
     if (Object.keys(input).length === 5 && errorCount === 0) {
-      let activity = createActivity(input);
+      setInput({});
+      setErrors({});
+      setSelectedOptions([]);
+      createActivity(input).then(activity => navigate(`/activities/${activity.id}`));
     }
   }
 
