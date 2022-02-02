@@ -1,10 +1,23 @@
 const express = require('express');
+const { Op } = require('sequelize');
 const { Country, Activity } = require('../db');
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  let countries = await Country.findAll();
+  let name = req.query.name;
+  let countries;
+  if (name) {
+    countries = await Country.findAll({
+      where: {
+        name: {
+          [Op.iLike]: `%${name}%`
+        }
+      }
+    })
+  } else {
+    countries = await Country.findAll();
+  }
   res.json(countries);
 });
 
