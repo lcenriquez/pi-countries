@@ -9,28 +9,44 @@ function validateName(input) {
 
 function validateDifficulty(input) {
   let errors = [];
-  if (input === "") errors.push("Difficulty can't be blank.");
-  input = +input; // Convert string to number
-  if (input && (isNaN(input) || input < 1 || input > 5)) {
-    // Validate if input is a number is between 1 and 5
-    errors.push("Difficulty must be a number between 1 and 5.");
+  if (input !== undefined){
+    if (input === "") errors.push("Difficulty can't be blank.");
+    if (input === "0") errors.push("Difficulty must be a number between 1 and 5.");
+    if (isNaN(+input)) errors.push("Difficulty must be a number between 1 and 5.");
+    input = +input; // Convert string to number
+    if (input && (isNaN(input) || input < 1 || input > 5)) {
+      // Validate if input is a number is between 1 and 5
+      errors.push("Difficulty must be a number between 1 and 5.");
+    }
   }
   return errors;
 }
 
 function validateDuration(input) {
   let errors = [];
-  if (input === "") errors.push("Difficulty can't be blank.");
-  input = +input; // Convert string to number
-  if (input && (isNaN(input) || input < 1 || input > 90)) {
-    // Validate if input is a number is between 1 and 5
-    errors.push("Duration must be at least 1 minute and at most 90 minutes.");
+  if (input !== undefined){
+    if (input === "") errors.push("Difficulty can't be blank.");
+    if (input === "0") errors.push("Duration must be at least 1 minute and at most 90 minutes.");
+    if (isNaN(+input)) errors.push("Duration must be at least 1 minute and at most 90 minutes.");
+    input = +input; // Convert string to number
+    if (input && (isNaN(input) || input < 1 || input > 90)) {
+      // Validate if input is a number is between 1 and 5
+      errors.push("Duration must be at least 1 minute and at most 90 minutes.");
+    }
   }
+    
+  return errors;
+}
+
+function validatePresence(input) {
+  let errors = [];
+  if (input === "") errors.push("Input can't be blank.")
   return errors;
 }
 
 module.exports = {
   validateName,
   validateDifficulty,
-  validateDuration
+  validateDuration,
+  validatePresence
 }

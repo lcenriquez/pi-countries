@@ -2,9 +2,8 @@ import { useState } from 'react';
 import { search } from '../../adapters/filter';
 import style from './Multiselect.module.css';
 
-export default function Multiselect({ options }) {
+export default function Multiselect({ options, selectedOptions, setSelectedOptions }) {
   const [ filteredOptions, setFilteredOptions ] = useState([]);
-  const [ selectedOptions, setSelectedOptions ] = useState([]);
 
   let visible = false;
   function showOptions() {
@@ -24,7 +23,7 @@ export default function Multiselect({ options }) {
   }
 
   function handleSelect(event) {
-    let selectedObject = {id: event.target.id, name: event.target.name};
+    let selectedObject = {id: event.target.id, name: event.target.value};
     if (event.target.checked) {
       let objectExists = selectedOptions.findIndex(option => option.id === selectedObject.id) > -1 ? true : false;
       if (!objectExists) setSelectedOptions([...selectedOptions, selectedObject]);
@@ -54,7 +53,7 @@ export default function Multiselect({ options }) {
 function CheckboxItem({ id, name, handleSelect, selected }) {
   return (
     <label>
-      <input type="checkbox" name={name} id={id} onChange={e => handleSelect(e)} defaultChecked={selected} />
+      <input type="checkbox" value={name} id={id} onChange={e => handleSelect(e)} defaultChecked={selected} />
       {name}
     </label>
   );

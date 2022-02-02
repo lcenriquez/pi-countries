@@ -1,11 +1,11 @@
 import Multiselect from '../../Multiselect/Multiselect';
 import style from './NewActivity.module.css';
 
-export default function NewActivity({ options, handleChange, errors }) {
+export default function NewActivity({ options, handleChange, handleSubmit, errors, selectedOptions, setSelectedOptions }) {
   return (
     <div className="container">
       <h1>New activity</h1>
-      <form className={style.newActivityForm}>
+      <form className={style.newActivityForm} onSubmit={e => handleSubmit(e)}>
         <div className={style.field}>
           <label htmlFor="name">Activity name</label>
           <input type="text" name="name" placeholder="Activity name" onChange={(e) => handleChange(e)} />
@@ -24,17 +24,21 @@ export default function NewActivity({ options, handleChange, errors }) {
         <div className={style.field}>
           <label htmlFor="season">Season</label>
           <select name="season" onChange={(e) => handleChange(e)}>
-            <option disabled value=""> -- select an option -- </option>
+            <option disabled value="" selected> -- select an option -- </option>
             <option value="Spring">Spring</option>
             <option value="Summer">Summer</option>
             <option value="Autumn">Autumn</option>
             <option value="Winter">Winter</option>
           </select>
-          <small>&nbsp;</small>
+          <small>{errors.season?.join(' ')}&nbsp;</small>
         </div>
         <div className={style.field}>
           <label>Countries</label>
-          <Multiselect options={options} />
+          <Multiselect options={options} selectedOptions={selectedOptions} setSelectedOptions={setSelectedOptions} />
+          <small>{errors.countries?.join(' ')}&nbsp;</small>
+        </div>
+        <div className={style.field}>
+          <button id="submitActivity" type="submit" disabled className="disabledButton">Submit</button>
         </div>
         All fields are required.
       </form>
