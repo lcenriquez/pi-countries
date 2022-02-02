@@ -8,14 +8,35 @@ describe('Country model', () => {
     }));
   describe('Validators', () => {
     beforeEach(() => Country.sync({ force: true }));
-    describe('name', () => {
-      it('should throw an error if name is null', (done) => {
+    describe('Create', () => {
+      it('should throw errors if object is empty', (done) => {
         Country.create({})
-          .then(() => done(new Error('It requires a valid name')))
-          .catch(() => done());
+        .catch(error => {
+          expect(error).not.to.equal(null);
+          done();
+        });
       });
-      it('should work when its a valid name', () => {
-        Country.create({ name: 'Argentina' });
+      it('should throw validation errors even if some argument is passed', async () => {
+        let country;
+        try {
+          country = await Country.create({ name: 'Argentina' });
+        } catch(error) {
+          expect(error).not.to.equal(null);
+        }
+      });
+      it('should work if all arguments are passed', async () => {
+        let country;
+        const validCountry = {
+          id: 'ARG',
+          name: 'Argentina',
+          flag: 'http://flag.com',
+          continent: 'South America',
+          capital: 'Buenos Aires'
+        };
+        try {
+          country = await Country.create(validCountry);
+        } catch(error) { console.log(error) }
+        expect(country.name).to.equal('Argentina');
       });
     });
   });
