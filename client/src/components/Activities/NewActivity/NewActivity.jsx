@@ -8,7 +8,7 @@ export default function NewActivity({ options, handleChange, handleSubmit, error
       <form className={style.newActivityForm} onSubmit={e => handleSubmit(e)}>
         <div className={style.field}>
           <label htmlFor="name">Activity name</label>
-          <input type="text" name="name" placeholder="Activity name" onChange={(e) => handleChange(e)} />
+          <input id="name" type="text" name="name" placeholder="Activity name" onChange={(e) => handleChange(e)} />
           <small>{errors.name?.join(' ')}&nbsp;</small>
         </div>
         <div className={style.field}>
