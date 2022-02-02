@@ -8,6 +8,12 @@ router.get('/', async (req, res) => {
   res.json(activities);
 });
 
+router.get('/:id', async (req, res) => {
+  let id = req.params.id;
+  let activity = await Activity.findByPk(id, {include: Country});
+  res.json(activity);
+});
+
 router.post('/', async (req, res) => {
   let activityJSON = req.body.activity;
   if (activityJSON) {
