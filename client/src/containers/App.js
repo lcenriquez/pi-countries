@@ -1,5 +1,6 @@
 import { Routes, Route, Outlet } from 'react-router-dom';
 import Activity from './Activity/Activity';
+import ShowActivityContainer from './Activity/ShowActivityContainer';
 import Home from './Home/Home';
 import Landing from '../components/Landing/Landing';
 import Layout from '../components/Layout/Layout';
@@ -17,6 +18,7 @@ function App() {
       </Route>
       <Route path="/activities" element={<Layout><Outlet /></Layout>}>
         <Route path="new" element={<Activity />} />
+        <Route path=":id" element={<ShowActivityContainer />} />
       </Route>
       <Route path="*" element={<p>Not found</p>} />
     </Routes>
