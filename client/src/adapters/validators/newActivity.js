@@ -1,4 +1,4 @@
-function validateName(input) {
+export function validateName(input) {
   let errors = [];
   let regEx = /^([a-zA-Z]+\s)*[a-zA-Z]+$/;
   if (input === "") errors.push("Activity name can't be blank.");
@@ -7,7 +7,7 @@ function validateName(input) {
   return errors;
 }
 
-function validateDifficulty(input) {
+export function validateDifficulty(input) {
   let errors = [];
   if (input !== undefined){
     if (input === "") errors.push("Difficulty can't be blank.");
@@ -22,7 +22,7 @@ function validateDifficulty(input) {
   return errors;
 }
 
-function validateDuration(input) {
+export function validateDuration(input) {
   let errors = [];
   if (input !== undefined){
     if (input === "") errors.push("Difficulty can't be blank.");
@@ -38,15 +38,8 @@ function validateDuration(input) {
   return errors;
 }
 
-function validatePresence(input) {
+export function validatePresence(input) {
   let errors = [];
   if (input === "") errors.push("Input can't be blank.")
   return errors;
-}
-
-module.exports = {
-  validateName,
-  validateDifficulty,
-  validateDuration,
-  validatePresence
 }

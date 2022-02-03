@@ -1,4 +1,4 @@
-function search(countries, name) {
+export function search(countries, name) {
   return countries.filter(country => country.name.toLowerCase().includes(name.toLowerCase()));
 }
 
@@ -32,7 +32,7 @@ function hasActivity(country, activityId) {
   return false;
 }
 
-function filter(countries, filters) {
+export function filter(countries, filters) {
   let filteredCountries = [...countries];
   if (filters.country && filters.country !== '') {
     filteredCountries = search(filteredCountries, filters.country);
@@ -50,9 +50,4 @@ function filter(countries, filters) {
   }
 
   return filteredCountries;
-}
-
-module.exports = {
-  filter,
-  search
 }

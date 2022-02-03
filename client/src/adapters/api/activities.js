@@ -1,4 +1,4 @@
-async function createActivity(activity) {
+export async function createActivity(activity) {
   let createdActivity = await fetch(`${process.env.REACT_APP_API_URL}/activities`, {
     method: 'post',
     headers: {
@@ -10,8 +10,4 @@ async function createActivity(activity) {
   .then(json => json)
   .catch(error => console.error(error));
   return createdActivity;
-}
-
-module.exports = {
-  createActivity
 }
