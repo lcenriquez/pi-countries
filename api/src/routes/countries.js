@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
       }
     })
   } else {
-    countries = await Country.findAll();
+    countries = await Country.findAll({include: Activity});
   }
   res.json(countries);
 });

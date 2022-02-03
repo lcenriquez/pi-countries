@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NewActivity from "../../components/Activities/NewActivity/NewActivity";
 import { createActivity } from "../../adapters/api/activities";
+import { getActivities } from "../../redux/actions";
 import { validateName, validateDifficulty, validateDuration, validatePresence } from "../../adapters/validators/newActivity";
 
 export default function Activity() {
@@ -61,7 +62,10 @@ export default function Activity() {
       setInput({});
       setErrors({});
       setSelectedOptions([]);
-      createActivity(input).then(activity => navigate(`/activities/${activity.id}`));
+      createActivity(input).then(activity => {
+        dispatch(getActivities());
+        navigate(`/activities/${activity.id}`)
+      });
     }
   }
 

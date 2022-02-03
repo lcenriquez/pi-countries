@@ -8,7 +8,7 @@ export default function ShowActivity({ name, difficulty, duration, season, count
       <p>Duration: {duration}</p>
       <p>Season: {season}</p>
       Available in:
-      <ul>{countries?.map(c => <li><Link to={`/countries/${c.id}`}>{c.name}</Link></li>)}</ul>
+      <ul>{countries?.map(c => <li key={c.id}><Link to={`/countries/${c.id}`}>{c.name}</Link></li>)}</ul>
     </div>
   );
 }

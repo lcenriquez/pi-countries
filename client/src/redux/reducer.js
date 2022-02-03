@@ -1,4 +1,5 @@
 const initialState = {
+  activities: [],
   countries: [],
   continents: [],
   filters: {}
@@ -25,6 +26,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         filters: {}
+      }
+    case "ADD_ACTIVITIES":
+      return {
+        ...state,
+        activities: action.activities
       }
     default:
       return state;

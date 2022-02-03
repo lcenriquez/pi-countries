@@ -18,6 +18,20 @@ function filterByContinent(countries, continent) {
   return countries.filter(country => country.continent === continent);
 }
 
+function filterByActivities(countries, activities) {
+  return countries.filter(country => hasActivity(country, activities[0]) === true);
+}
+
+function hasActivity(country, activityId) {
+  let index = country.activities.findIndex(a => {
+    // console.log("Country.activity.id:", a.id);
+    // console.log("Activity id (filter):", activityId);
+    return a.id === +activityId
+  });
+  if (index > -1) return true;
+  return false;
+}
+
 function filter(countries, filters) {
   let filteredCountries = [...countries];
   if (filters.country && filters.country !== '') {
@@ -28,6 +42,11 @@ function filter(countries, filters) {
   }
   if (filters.continent && filters.continent !== '') {
     filteredCountries = filterByContinent(filteredCountries, filters.continent);
+  }
+  // Written in plural because multiple activity search is intended in the future
+  if (filters.activities && filters.activities !== '') {
+    console.log("FILTER ACTIVITIES");
+    filteredCountries = filterByActivities(filteredCountries, filters.activities);
   }
 
   return filteredCountries;
