@@ -8,10 +8,10 @@ import { addCountries, addFilter, clearFilters, getActivities } from '../../redu
 import { filter } from '../../adapters/filter';
 import { paginate } from '../../adapters/paginate';
 
-export default function Home() {
+export default function CountriesContainer() {
+  const dispatch = useDispatch();
   const [ countries, setCountries ] = useState([]);
   const [ currentPage, setCurrentPage ] = useState(1);
-  const dispatch = useDispatch();
   const reduxCountries = useSelector(state => state.countries);
   const reduxContinents = useSelector(state => state.continents);
   const reduxFilters = useSelector(state => state.filters);

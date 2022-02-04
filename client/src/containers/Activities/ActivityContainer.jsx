@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import ShowActivity from "../../components/Activities/ShowActivity/ShowActivity";
+import ShowActivity from "../../components/Activities/ShowActivity";
 
-export default function ShowActivityContainer() {
+export default function ActivityContainer() {
   const [ activity, setActivity ] = useState({})
   const params = useParams();
   const id = params.id;

@@ -1,27 +1,9 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import ActivityCard from "../ActivityCard/ActivityCard";
-import { getCountry } from "../../adapters/api/countries";
+import ActivityCard from "../Cards/ActivityCard";
 import style from './Country.module.css';
 
-export default function Country() {
-  const [ country, setCountry ] = useState({});
-  const params = useParams();
-  let id = params.id;
-
-  useEffect(() => {
-    getCountry(id).then(country => setCountry(country));
-  },[]);
-
+export default function Country({ id, name, flag, continent, capital, subregion, population, area, activities }) {
   return (
-    <div className={style.countryContainer}>
-      {country.hasOwnProperty('id') ? <Details {...country} /> : <p>Loading...</p>}
-    </div>
-  );
-}
-
-function Details({ id, name, flag, continent, capital, subregion, population, area, activities }) {
-  return (
+    
     <div className={style.countryLayout}>
       <div className={style.leftSidebar}>
         <h1>Things to do in {name}</h1>

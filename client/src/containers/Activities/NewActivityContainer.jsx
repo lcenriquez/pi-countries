@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import NewActivity from "../../components/Activities/NewActivity/NewActivity";
+import NewActivity from "../../components/Activities/NewActivity";
 import { createActivity } from "../../adapters/api/activities";
 import { getActivities } from "../../redux/actions";
 import { validateName, validateDifficulty, validateDuration, validatePresence } from "../../adapters/validators/newActivity";
 
-export default function Activity() {
+export default function NewActivityContainer() {
   const dispatch = useDispatch();
   const navigate = useNavigate(); 
   const [ input, setInput ] = useState({});

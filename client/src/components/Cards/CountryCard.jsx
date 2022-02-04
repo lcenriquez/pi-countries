@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import style from './Card.module.css';
+import style from './CountryCard.module.css';
 
-export default function Card({ id, name, flag, continent }) {
+export default function CountryCard({ id, name, flag, continent }) {
   return (
     <Link className={style.cardContainer} to={`/countries/${id}`}>
       <div className={style.title}>

@@ -1,4 +1,4 @@
-import Multiselect from '../../Multiselect/Multiselect';
+import MultiSelectContainer from '../../containers/MultiSelect/MultiselectContainer';
 import style from './NewActivity.module.css';
 
 export default function NewActivity({ options, handleChange, handleSubmit, errors, selectedOptions, setSelectedOptions }) {
@@ -34,7 +34,7 @@ export default function NewActivity({ options, handleChange, handleSubmit, error
         </div>
         <div className={style.field}>
           <label>Countries</label>
-          <Multiselect options={options} selectedOptions={selectedOptions} setSelectedOptions={setSelectedOptions} />
+          <MultiSelectContainer options={options} selectedOptions={selectedOptions} setSelectedOptions={setSelectedOptions} />
           <small>{errors.countries?.join(' ')}&nbsp;</small>
         </div>
         <div className={style.field}>
