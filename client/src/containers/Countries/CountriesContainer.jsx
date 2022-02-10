@@ -17,17 +17,12 @@ export default function CountriesContainer() {
   const reduxFilters = useSelector(state => state.filters);
   const reduxActivities = useSelector(state => state.activities);
 
-  useEffect(() => {
-    // Set initial state
-    if (reduxCountries.length === 0) {
-      // Fetch countries from API for the first time only
-      getAllCountries().then(countries => dispatch(addCountries(countries)));
-      // Fetch activities from API (will be called later)
-      dispatch(getActivities());
-    }
-    // Match local state to redux state if no filters are applied
-    if (Object.keys(reduxFilters).length === 0) setCountries(paginate(reduxCountries));
-  },[reduxCountries]);
+  useEffect(() => { // On first load only
+    // Fetch countries from API for the first time only
+    getAllCountries().then(countries => dispatch(addCountries(countries)));
+    // Fetch activities from API (will be called later)
+    dispatch(getActivities());
+  },[]);
 
   useEffect(() => {
     // Filtering
@@ -37,16 +32,9 @@ export default function CountriesContainer() {
       setCurrentPage(1);
     } else {
       // Reset state if filters are cleared
-      setCountries(paginate(reduxCountries));
+      if (reduxCountries.length > 0) setCountries(paginate(reduxCountries));
     }
-  }, [reduxFilters])
-
-  useEffect(() => { // Update just on first load
-    // Fetch countries from API for the first time only
-    getAllCountries().then(countries => dispatch(addCountries(countries)));
-     // Fetch activities from API (will be called later)
-     dispatch(getActivities());
-  },[]);
+  }, [reduxCountries, reduxFilters])
 
   return (
     <div>
