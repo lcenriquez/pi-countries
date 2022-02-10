@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NewActivity from "../../components/Activities/NewActivity";
 import { createActivity } from "../../adapters/api/activities";
-import { getActivities } from "../../redux/actions";
+import { getActivities, getCountries } from "../../redux/actions";
 import { validateName, validateDifficulty, validateDuration, validatePresence } from "../../adapters/validators/newActivity";
 
 export default function NewActivityContainer() {
@@ -14,6 +14,11 @@ export default function NewActivityContainer() {
   const [ selectedOptions, setSelectedOptions ] = useState([]);
   const reduxCountries = useSelector(state => state.countries)
   let errorCount = 0;
+  
+  useEffect(() => {
+    // On page load
+    if (reduxCountries.length === 0) dispatch(getCountries());
+  },[]);
 
   useEffect(() => {
     Object.values(errors).forEach(error => error.length > 0 ? errorCount += 1 : null)

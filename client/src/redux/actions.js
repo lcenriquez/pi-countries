@@ -1,7 +1,20 @@
 export function addCountries(countries) {
+  // Fetch called in adapters/api/countries
   return {
     type: 'ADD_COUNTRIES',
     countries
+  }
+}
+
+export function getCountries() {
+  return async function(dispatch) {
+    try {
+      let response = await fetch(`${process.env.REACT_APP_API_URL}/countries`);
+      let countries = await response.json();
+      return dispatch({type: 'ADD_COUNTRIES', countries})
+    } catch(e) {
+      console.log(e);
+    }
   }
 }
 
