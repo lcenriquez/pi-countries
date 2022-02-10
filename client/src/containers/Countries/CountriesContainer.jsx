@@ -22,8 +22,6 @@ export default function CountriesContainer() {
     if (reduxCountries.length === 0) {
       // Fetch countries from API for the first time only
       getAllCountries().then(countries => dispatch(addCountries(countries)));
-      // Fetch activities from API (will be called later)
-      dispatch(getActivities());
     }
     // Match local state to redux state if no filters are applied
     if (Object.keys(reduxFilters).length === 0) setCountries(paginate(reduxCountries));
@@ -39,6 +37,13 @@ export default function CountriesContainer() {
       setCountries(paginate(reduxCountries));
     }
   }, [reduxFilters])
+
+  useEffect(() => {
+    // Fetch countries from API for the first time only
+    getAllCountries().then(countries => dispatch(addCountries(countries)));
+    // Fetch activities from API (will be called later)
+    dispatch(getActivities());
+  },[reduxActivities]);
 
   return (
     <div>
