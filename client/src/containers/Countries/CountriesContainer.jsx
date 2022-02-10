@@ -32,6 +32,7 @@ export default function CountriesContainer() {
     if (Object.keys(reduxFilters).length > 0) {
       // Apply filters if at least one exists
       setCountries(paginate(filter(reduxCountries, reduxFilters)))
+      setCurrentPage(1);
     } else {
       // Reset state if filters are cleared
       setCountries(paginate(reduxCountries));
