@@ -36,6 +36,16 @@ export default function CountriesContainer() {
     }
   }, [reduxCountries, reduxFilters])
 
+  if(countries.length === 0) {
+    // No results found conditional render
+    return (
+      <div>
+        <Filters reduxFilters={reduxFilters} reduxActivities={reduxActivities} reduxContinents={reduxContinents} addFilter={(filter, value) => dispatch(addFilter(filter, value))} clearFilters={() => dispatch(clearFilters())} />
+        <p>No results found</p>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Filters reduxFilters={reduxFilters} reduxActivities={reduxActivities} reduxContinents={reduxContinents} addFilter={(filter, value) => dispatch(addFilter(filter, value))} clearFilters={() => dispatch(clearFilters())} />
