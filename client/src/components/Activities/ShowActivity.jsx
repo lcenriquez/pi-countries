@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function ShowActivity({ name, difficulty, duration, season, countries }) {
   return (
-    <div>
+    <div className="container">
       <h1>{name}</h1>
       <p>Difficulty: {difficulty}</p>
       <p>Duration: {duration}</p>
