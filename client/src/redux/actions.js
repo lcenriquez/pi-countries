@@ -8,6 +8,7 @@ export function addCountries(countries) {
 
 export function getCountries() {
   return async function(dispatch) {
+    dispatch({type: 'SET_LOADING', loading: true});
     try {
       let response = await fetch(`${process.env.REACT_APP_API_URL}/countries`);
       let countries = await response.json();
@@ -41,5 +42,12 @@ export function getActivities() {
       dispatch({type: "ADD_ACTIVITIES", activities: json})
     })
     .catch(e => console.log(e));
+  }
+}
+
+export function setLoading(state) {
+  return {
+    type: 'SET_LOADING',
+    loading: state
   }
 }

@@ -2,7 +2,8 @@ const initialState = {
   activities: [],
   countries: [],
   continents: [],
-  filters: {}
+  filters: {},
+  loading: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -13,7 +14,8 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         countries: action.countries,
-        continents: continents
+        continents: continents,
+        loading: false
       }
     case "ADD_FILTER":
       return {
@@ -31,6 +33,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         activities: action.activities
+      }
+    case "SET_LOADING":
+      return {
+        ...state,
+        loading: action.loading
       }
     default:
       return state;

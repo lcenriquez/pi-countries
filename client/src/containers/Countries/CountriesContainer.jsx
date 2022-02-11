@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Filters from '../../components/Filters/Filters';
 import Countries from '../../components/Countries/Countries';
 import PaginationSelector from '../../components/PaginationSelector/PaginationSelector';
-import { getAllCountries } from '../../adapters/api/countries';
-import { addCountries, addFilter, clearFilters, getActivities } from '../../redux/actions';
+import { getCountries,addFilter, clearFilters, getActivities } from '../../redux/actions';
 import { filter } from '../../adapters/filter';
 import { paginate } from '../../adapters/paginate';
 
@@ -16,10 +15,11 @@ export default function CountriesContainer() {
   const reduxContinents = useSelector(state => state.continents);
   const reduxFilters = useSelector(state => state.filters);
   const reduxActivities = useSelector(state => state.activities);
+  const reduxLoading = useSelector(state => state.loading);
 
   useEffect(() => { // On first load only
     // Fetch countries from API for the first time only
-    getAllCountries().then(countries => dispatch(addCountries(countries)));
+    dispatch(getCountries());
     // Fetch activities from API (will be called later)
     dispatch(getActivities());
   },[]);
@@ -37,11 +37,11 @@ export default function CountriesContainer() {
   }, [reduxCountries, reduxFilters])
 
   if(countries.length === 0) {
-    // No results found conditional render
+    // No results found / loading conditional render
     return (
       <div>
         <Filters reduxFilters={reduxFilters} reduxActivities={reduxActivities} reduxContinents={reduxContinents} addFilter={(filter, value) => dispatch(addFilter(filter, value))} clearFilters={() => dispatch(clearFilters())} />
-        <p>No results found</p>
+        <p>{reduxLoading === true ? 'Loading...' : 'No results found'}</p>
       </div>
     );
   }
