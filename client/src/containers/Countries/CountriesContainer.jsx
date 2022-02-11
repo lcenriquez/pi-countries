@@ -39,7 +39,7 @@ export default function CountriesContainer() {
   if(countries.length === 0) {
     // No results found / loading conditional render
     return (
-      <div>
+      <div className="container">
         <Filters reduxFilters={reduxFilters} reduxActivities={reduxActivities} reduxContinents={reduxContinents} addFilter={(filter, value) => dispatch(addFilter(filter, value))} clearFilters={() => dispatch(clearFilters())} />
         <p>{reduxLoading === true ? 'Loading...' : 'No results found'}</p>
       </div>
@@ -47,7 +47,7 @@ export default function CountriesContainer() {
   }
 
   return (
-    <div>
+    <div className="container">
       <Filters reduxFilters={reduxFilters} reduxActivities={reduxActivities} reduxContinents={reduxContinents} addFilter={(filter, value) => dispatch(addFilter(filter, value))} clearFilters={() => dispatch(clearFilters())} />
       <PaginationSelector array={countries[currentPage-1] || []} currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={countries.length} />
       <Countries countries={countries[currentPage-1] || []} currentPage={currentPage} totalPages={countries.length} />
