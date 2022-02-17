@@ -33,8 +33,8 @@ describe('Country routes', () => {
       expect(response.body[0].name).to.equal('Argentina');
     });
     it('should return null when name=doesNotExist', async () => {
-      let response = agent.get('/countries?name=mexico').expect(200);
-      expect(response.body).to.equal(undefined);
+      let response = await agent.get('/countries?name=mexico').expect(200);
+      expect(response.body[0]).to.equal(undefined);
     });
   });
 });
