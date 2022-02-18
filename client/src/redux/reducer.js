@@ -3,7 +3,8 @@ const initialState = {
   countries: [],
   continents: [],
   filters: {},
-  loading: false
+  loading: false,
+  darkMode: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -39,6 +40,11 @@ export default function reducer(state = initialState, action) {
         ...state,
         loading: action.loading
       }
+    case "TOGGLE_DARK_MODE":
+        return {
+          ...state,
+          darkMode: !state.darkMode
+        }
     default:
       return state;
   }
