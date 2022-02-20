@@ -6,6 +6,7 @@ import Landing from '../components/Landing/Landing';
 import Layout from '../components/Layout/Layout';
 import CountryContainer from './Countries/CountryContainer';
 import ActivitiesContainer from './Activities/ActivitiesContainer';
+import NotFound from '../components/Errors/NotFound';
 
 function App() {
   document.body.classList.add('darkMode');
@@ -22,7 +23,7 @@ function App() {
         <Route path="new" element={<NewActivityContainer />} />
         <Route path=":id" element={<ShowActivityContainer />} />
       </Route>
-      <Route path="*" element={<p>Not found</p>} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
